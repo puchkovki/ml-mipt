@@ -77,7 +77,7 @@ class KNearestNeighbor(object):
                 # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
                 # Возведя столбец в степень, получаем столбец возведенных в эту степень элементов столбца
-                dists[i, j] = np.sqrt( np.sum( ( X[i] - self.X_train[j] ) ** 2 ) )
+                dists[i, j] = np.sqrt( np.sum((X[i] - self.X_train[j]) ** 2) )
 
                 # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
         return dists
@@ -102,7 +102,7 @@ class KNearestNeighbor(object):
             # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
             # Отнимая от вектора матрицу, мы получаем матрицу
-            dists[i,:] = np.sqrt( np.sum( ( X[i] - self.X_train ) ** 2, axis=1 ) )
+            dists[i,:] = np.sqrt(np.sum ((X[i] - self.X_train) ** 2, axis=1) )
 
             # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
         return dists
