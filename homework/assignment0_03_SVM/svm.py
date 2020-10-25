@@ -17,13 +17,18 @@ def rbf(x_1, x_2, sigma=1.):
         kernel function values for all pairs of samples from x_1 and x_2
         torch.tensor of type torch.float32 shaped `(#samples_1, #samples_2)`
     '''
-    k = - 2 * sigma**2
+    # Turn into column and make a 3-dim
+    y_1 = x_1.unsqueeze(1).expand(x_1.size(0), x_2.size(0), x_1.size(1))
+    # Turn into row and make a 3-dim
+    y_2 = x_2.unsqueeze(0).expand(x_1.size(0), x_2.size(0), x_1.size(1))
+    k = -1 / (2 * sigma ** 2)
 
-    distances = np.exp(pairwise_distances(x_1, x_2) / k) ### YOUR CODE HERE
-    return torch.Tensor(distances).type(torch.float32) 
+    distances = np.exp(k * torch.pow(y_1 - y_2, 2).sum(2) )
+    return torch.Tensor(distances).type(torch.float32)
 
 def hinge_loss(scores, labels):
-    '''Mean loss for batch of objects
+    '''
+    Mean loss for batch of objects
     '''
     assert len(scores.shape) == 1
     assert len(labels.shape) == 1
