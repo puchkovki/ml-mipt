@@ -61,6 +61,7 @@ class LossAndDerivatives:
         """
         Simply ignores the regularization
         """
+        
         return 0.
     
     @staticmethod
@@ -126,7 +127,6 @@ class LossAndDerivatives:
         Computes the L1 regularization term derivative w.r.t. the weight matrix w.
         """
 
-        # YOUR CODE HERE
         return np.sign(w)
 
     @staticmethod
@@ -134,4 +134,5 @@ class LossAndDerivatives:
         """
         Simply ignores the derivative
         """
+
         return np.zeros_like(w)
