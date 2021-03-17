@@ -1,0 +1,9 @@
+*.tar*
+.ipynb_checkpoints
+__pycache__
+*.gz
+*.tsv
+*notmnist*
+notMNIST_small/
+names
+*.pth
