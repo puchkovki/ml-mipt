@@ -7,3 +7,6 @@ __pycache__
 notMNIST_small/
 names
 *.pth
+Train*.csv
+*.vec
+*.bin
