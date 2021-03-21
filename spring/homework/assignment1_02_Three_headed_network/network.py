@@ -43,11 +43,12 @@ class ThreeInputsNet(nn.Module):
         								  )
 
         self.post_concat = nn.Linear(3 * hid_size + n_cat_features, concat_number_of_features)
-
-
+        
         # Example for the final layers (after the concatenation)
         self.inter_dense = nn.Linear(in_features=concat_number_of_features, out_features=hid_size*2)
         self.final_dense = nn.Linear(in_features=hid_size*2, out_features=1)
+
+        self.relu = nn.ReLU()
 
         
 
@@ -71,6 +72,6 @@ class ThreeInputsNet(nn.Module):
 
         out = self.post_concat(concatenated)
         out = self.inter_dense(out)
-        out = self.final_dense(out)
+        out = self.final_dense(self.relu(out))
         
         return out
