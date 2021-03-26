@@ -10,3 +10,6 @@ names
 Train*.csv
 *.vec
 *.bin
+*.txt
+*.pt
+test*
